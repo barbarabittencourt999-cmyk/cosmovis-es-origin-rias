@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constelações — Itahy</title>
+<meta name="description" content="Galeria de constelações indígenas com filtros por cultura: Tupi-Guarani, Andina e Mesoamericana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="starfield" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">Ita<span>hy</span></a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="povos.html">Povos</a></li>
+      <li><a href="constelacoes.html" class="active">Constelações</a></li>
+      <li><a href="mitologia.html">Mitologia</a></li>
+      <li><a href="calendario.html">Calendário</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="section container">
+    <div class="section-head">
+      <p class="tag">Galeria celeste</p>
+      <h2>Constelações indígenas</h2>
+      <p>Clique em uma constelação para conhecer sua história. Use os filtros para explorar por cultura.</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="Tupi-Guarani">Tupi-Guarani</button>
+      <button class="filter-btn" data-filter="Andina">Andina</button>
+      <button class="filter-btn" data-filter="Mesoamericana">Mesoamericana</button>
+    </div>
+
+    <div class="grid" id="const-grid">
+      <article class="card" data-cultura="Tupi-Guarani" data-nome="Ema Celeste (Guirá Nhandu)" data-equivalente="Cruzeiro do Sul + Escorpião" data-img="images/Ema.jpeg" data-descricao="A Ema é uma das constelações indígenas mais conhecidas. Ela é formada pelas regiões escuras da Via Láctea, e não pelas estrelas brilhantes.
+Para os Guarani, a Ema está relacionada ao ciclo das estações. Quando aparece em determinada posição no céu, indica mudanças climáticas e períodos adequados para o plantio e a colheita. A constelação também representa a ligação entre o céu e a vida na Terra, mostrando que os fenômenos naturais seguem uma ordem sagrada estabelecida pelos ancestrais
+">
+        <div class="card-img"><img src="images/Ema.jpeg" alt="Ema Celeste"></div>
+        <div class="card-body">
+          <span class="tag">Tupi-Guarani · Inverno</span>
+          <h3>Ema Celeste</h3>
+          <p>A Ema ajuda a compreender as mensagens da natureza e a manter o equilíbrio da comunidade.</p>
+        </div>
+      </article>
+
+      <article class="card" data-cultura="Tupi-Guarani" data-nome="Homem Velho" data-equivalente="Touro + Órion" data-img="images/homem_velho.jpeg" data-descricao="Formada pelas constelações ocidentais de Touro e Órion, anuncia o verão. Conta a lenda que esse homem foi morto pela esposa, que cortou-lhe a perna para ficar com o cunhado. Comovidos, os deuses o transformaram em constelação — por isso ele aparece no céu com uma perna mais curta.">
+        <div class="card-img"><img src="images/homem_velho.jpeg" alt="Homem Velho"></div>
+        <div class="card-body">
+          <span class="tag">Tupi-Guarani · Verão</span>
+          <h3>Homem Velho</h3>
+          <p>Ancestral que caminha pelo céu marcando o verão.</p>
+        </div>
+      </article>
+
+      <article class="card" data-cultura="Tupi-Guarani" data-nome="Anta do Norte (Tapi'i)" data-equivalente="Cisne, Cassiopeia, Cefeu, Andrômeda" data-img="images/Anta-do-Norte.jpeg" data-descricao="Entre os Tukano, a Anta é uma figura importante do céu e está ligada à sobrevivência e à abundância.
+A anta é um animal muito presente na floresta amazônica e aparece em diversas histórias tradicionais. Sua posição no céu servia como referência para atividades de caça, pesca e coleta.
+">
+        <div class="card-img"><img src="images/Anta-do-Norte.jpeg" alt="Anta do Norte"></div>
+        <div class="card-body">
+          <span class="tag">Tupi-Guarani · Primavera</span>
+          <h3>Anta do Norte</h3>
+          <p>A Anta celeste relembra histórias de acontecimentos míticos e ajuda a organizar a vida social e econômica da aldeia.</p>
+        </div>
+      </article>
+
+      <article class="card" data-cultura="Tupi-Guarani" data-nome="Cervo do Pantanal" data-equivalente="Cruzeiro do Sul + Vela + Carina + Centauro" data-img="images/cervo.jpg" data-descricao="O Cervo do Pantanal é outra constelação observada pelos Guarani. Esse animal simboliza inteligência, rapidez e harmonia com a natureza.
+A observação dessa constelação indicava épocas favoráveis para determinadas atividades de caça, sempre respeitando os ciclos naturais.">
+        <div class="card-img"><img src="images/cervo.jpg" alt="Cervo do Pantanal"></div>
+        <div class="card-body">
+          <span class="tag">Tupi-Guarani · Outono</span>
+          <h3>Cervo do Pantanal</h3>
+          <p>Visto como um ser que ensina prudência e respeito aos recursos naturais, sua presença no céu reforça a ideia de que o ser humano deve viver em equilíbrio com os demais seres vivos.</p>
+        </div>
+      </article>
+
+      <article class="card" data-cultura="Andina" data-nome="Chakana (Cruz Andina)" data-equivalente="Cruzeiro do Sul" data-img="images/chakana.jpg" data-descricao="Símbolo sagrado da cosmovisão andina, a Chakana representa a união dos três mundos: Hanan Pacha (céu), Kay Pacha (terra) e Uku Pacha (mundo de baixo). Suas estrelas correspondem ao Cruzeiro do Sul e orientam ciclos agrícolas e cerimônias.">
+        <div class="card-img"><img src="images/chakana.jpg" alt="Chakana"></div>
+        <div class="card-body">
+          <span class="tag">Andina</span>
+          <h3>Chakana</h3>
+          <p>A ponte entre os três mundos: céu, terra e subterrâneo.</p>
+        </div>
+      </article>
+
+      <article class="card" data-cultura="Andina" data-nome="Yacana (Lhama Celeste)" data-equivalente="Nuvem escura na Via Láctea (Alfa e Beta Centauri como olhos)" data-img="images/yacana.jpg" data-descricao="Constelação escura formada pelas nebulosas de poeira interestelar da Via Láctea. Segundo a tradição inca, Yacana desce à meia-noite para beber a água dos mares e evitar inundações na Terra. Seus olhos brilhantes são Alfa e Beta Centauri.">
+        <div class="card-img"><img src="images/yacana.jpg" alt="Yacana"></div>
+        <div class="card-body">
+          <span class="tag">Andina</span>
+          <h3>Yacana</h3>
+          <p>A lhama escura que bebe água dos oceanos.</p>
+        </div>
+      </article>
+
+  <section class="section container">
+    <div class="ornament"></div>
+    <div class="section-head">
+      <p class="tag">Saber Tupi-Guarani</p>
+      <h2>As constelações das estações</h2>
+      <p>Quatro figuras que marcam o ciclo do ano para os povos Tupi-Guarani.</p>
+    </div>
+    <div class="season-grid">
+      <div class="season-card">
+        <span class="season-badge primavera">Primavera</span>
+        <h4>Anta do Norte</h4>
+        <p>Surge na segunda quinzena de setembro, caminhando pela Via Láctea.</p>
+      </div>
+      <div class="season-card">
+        <span class="season-badge verao">Verão</span>
+        <h4>Homem Velho</h4>
+        <p>Touro + Órion ao anoitecer, anunciando as chuvas e o plantio.</p>
+      </div>
+      <div class="season-card">
+        <span class="season-badge outono">Outono</span>
+        <h4>Cervo do Pantanal</h4>
+        <p>Aparece em março, entre Cruzeiro do Sul, Vela, Carina e Centauro.</p>
+      </div>
+      <div class="season-card">
+        <span class="season-badge inverno">Inverno</span>
+        <h4>Ema Celeste</h4>
+        <p>Visível em junho, entre o Cruzeiro do Sul e o Escorpião.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" aria-label="Fechar">×</button>
+    <img class="m-img" src="" alt="">
+    <p class="meta m-tag"></p>
+    <h3 class="m-title"></h3>
+    <p class="m-eq" style="font-style:italic;"></p>
+    <p class="m-desc"></p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="ornament"></div>
+    <p class="footer-bottom">© 2026 Itahy. Conteúdo educativo.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+/* Itahy — Astronomia Indígena da América Latina */
+:root {
+  --night-deep: #0c1024;
+  --night: #161c3d;
+  --night-soft: #1f2752;
+  --urucum: #c0392b;
+  --urucum-glow: #e74c3c;
+  --bone: #f5ecd9;
+  --muted: #a8a6c0;
+  --border: rgba(192, 57, 43, 0.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #1d2553 0%, var(--night-deep) 60%, #08091a 100%);
+  background-attachment: fixed;
+  color: var(--bone);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============ Starfield ============ */
+.starfield {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+.starfield .star {
+  position: absolute;
+  background: var(--bone);
+  border-radius: 50%;
+  animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+.starfield::after {
+  content: '';
+  position: absolute;
+  bottom: -8rem; left: 50%;
+  transform: translateX(-50%);
+  width: 80vw; height: 16rem;
+  background: var(--urucum);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.18;
+}
+
+/* ============ Layout ============ */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 1; }
+
+main { position: relative; z-index: 1; min-height: 70vh; }
+
+/* ============ Header ============ */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(12, 16, 36, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0;
+}
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--bone);
+}
+.brand span { color: var(--urucum-glow); }
+.nav-toggle {
+  display: none;
+  background: none; border: 1px solid var(--border);
+  color: var(--bone); padding: 0.4rem 0.7rem;
+  border-radius: 6px; cursor: pointer; font-size: 1.2rem;
+}
+.nav-links {
+  display: flex; gap: 1.5rem; list-style: none;
+}
+.nav-links a {
+  font-size: 0.92rem;
+  color: var(--muted);
+  transition: color 0.2s;
+  position: relative; padding-bottom: 3px;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--bone);
+}
+.nav-links a.active::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--urucum-glow);
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: var(--night-deep);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 0.7rem 0; }
+}
+
+/* ============ Hero ============ */
+.hero {
+  position: relative; overflow: hidden;
+  text-align: center;
+  padding: 6rem 1.25rem 7rem;
+  isolation: isolate;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: -1;
+}
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(12,16,36,0.4) 0%,
+    rgba(12,16,36,0.75) 60%,
+    var(--night-deep) 100%);
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.72rem;
+  color: var(--urucum-glow);
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  margin-bottom: 1.2rem;
+}
+.hero h1 .accent { color: var(--urucum-glow); }
+.hero p.lede {
+  max-width: 38rem; margin: 0 auto 2rem;
+  color: var(--muted); font-size: 1.05rem;
+}
+.cta-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--urucum);
+  color: var(--bone);
+  box-shadow: 0 0 30px -8px var(--urucum-glow);
+}
+.btn-primary:hover { background: var(--urucum-glow); transform: translateY(-2px); }
+.btn-ghost {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--border);
+  color: var(--bone);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+/* ============ Section ============ */
+.section { padding: 4.5rem 0; }
+.section-head { margin-bottom: 2.5rem; }
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+.section-head p { color: var(--muted); max-width: 42rem; }
+
+.ornament {
+  height: 10px;
+  background-image:
+    linear-gradient(90deg, transparent, var(--urucum) 20%, var(--urucum) 80%, transparent),
+    repeating-linear-gradient(90deg, transparent 0 14px, var(--urucum) 14px 16px);
+  background-size: 100% 1px, 100% 6px;
+  background-repeat: no-repeat;
+  background-position: center 2px, center bottom;
+  opacity: 0.5;
+  margin: 2rem 0;
+}
+
+/* ============ Cards Grid ============ */
+.grid {
+  display: grid; gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.card {
+  background: rgba(31, 39, 82, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.25s;
+  display: flex; flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--urucum-glow);
+  box-shadow: 0 12px 40px -15px rgba(231, 76, 60, 0.4);
+}
+.card-img {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--night-deep);
+}
+.card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s;
+}
+.card:hover .card-img img { transform: scale(1.05); }
+.card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--urucum-glow);
+  margin-bottom: 0.4rem;
+}
+.card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.card p { color: var(--muted); font-size: 0.92rem; }
+
+/* ============ Filter buttons ============ */
+.filters {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+}
+.filter-btn {
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.filter-btn:hover { color: var(--bone); }
+.filter-btn.active {
+  background: var(--urucum);
+  border-color: var(--urucum);
+  color: var(--bone);
+}
+
+/* ============ Sky map ============ */
+.sky-map {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0a0e26, #161c3d);
+  padding: 1rem;
+  position: relative;
+}
+.sky-map svg { width: 100%; height: auto; display: block; }
+.sky-map .star-dot {
+  cursor: pointer;
+  transition: r 0.2s, fill 0.2s;
+}
+.sky-map .const-line {
+  stroke: var(--urucum);
+  stroke-width: 1.2;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.sky-map .const-group:hover .const-line { opacity: 0.9; }
+.sky-map .const-group:hover .star-dot { fill: var(--urucum-glow); }
+.sky-map .const-label {
+  fill: var(--bone);
+  font-size: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.sky-map .const-group:hover .const-label { opacity: 1; }
+
+/* ============ Modal ============ */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(8, 9, 26, 0.85);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center; justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--night);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 640px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  background: none; border: none; color: var(--bone);
+  font-size: 1.6rem; cursor: pointer; line-height: 1;
+  width: 2rem; height: 2rem;
+}
+.modal h3 { font-size: 2rem; margin-bottom: 0.4rem; }
+.modal .meta { color: var(--urucum-glow); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+.modal img { border-radius: 10px; margin-bottom: 1rem; }
+.modal p { color: var(--muted); margin-bottom: 0.7rem; }
+
+/* ============ Carousel (mitologia) ============ */
+.carousel { position: relative; overflow: hidden; border-radius: 14px; border: 1px solid var(--border); }
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; min-height: 360px; }
+.carousel-text { padding: 2.5rem; background: var(--night); display: flex; flex-direction: column; justify-content: center; }
+.carousel-text .tag { margin-bottom: 0.8rem; }
+.carousel-text h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+.carousel-text p { color: var(--muted); }
+.carousel-controls {
+  display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.2rem;
+}
+.carousel-controls button {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--bone);
+  width: 2.5rem; height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.carousel-controls button:hover { background: var(--urucum); border-color: var(--urucum); }
+
+@media (max-width: 720px) {
+  .carousel-slide { grid-template-columns: 1fr; }
+  .carousel-slide img { min-height: 240px; }
+}
+
+/* ============ Accordion (calendario) ============ */
+.accordion-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.7rem;
+  background: rgba(31, 39, 82, 0.3);
+  overflow: hidden;
+}
+.accordion-header {
+  width: 100%;
+  background: none; border: none;
+  color: var(--bone);
+  padding: 1.1rem 1.3rem;
+  font-size: 1.05rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: inherit;
+}
+.accordion-header .when { color: var(--urucum-glow); font-size: 0.8rem; margin-right: 0.5rem; }
+.accordion-header .chevron { transition: transform 0.3s; }
+.accordion-item.open .accordion-header .chevron { transform: rotate(180deg); }
+.accordion-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s;
+  padding: 0 1.3rem;
+  color: var(--muted);
+}
+.accordion-item.open .accordion-body {
+  max-height: 400px;
+  padding: 0 1.3rem 1.2rem;
+}
+
+/* ============ Detail rows (povos) ============ */
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+.detail-row:nth-child(even) .detail-img-wrap { order: 2; }
+.detail-img-wrap {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 4 / 3;
+}
+.detail-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.detail-row h3 { font-size: 2rem; margin-bottom: 0.3rem; }
+.detail-row .region { color: var(--urucum-glow); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+.detail-row p { color: var(--muted); margin-bottom: 0.8rem; }
+
+@media (max-width: 720px) {
+  .detail-row { grid-template-columns: 1fr; gap: 1.2rem; margin-bottom: 3rem; }
+  .detail-row:nth-child(even) .detail-img-wrap { order: 0; }
+}
+
+/* ============ Seasonal grid ============ */
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.season-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  background: rgba(31, 39, 82, 0.4);
+}
+.season-card .season-badge {
+  display: inline-block;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.2rem 0.6rem; border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+.season-badge.primavera { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+.season-badge.verao     { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+.season-badge.outono    { background: rgba(230, 126, 34, 0.2); color: #e67e22; }
+.season-badge.inverno   { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+.season-card h4 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+.season-card p { color: var(--muted); font-size: 0.88rem; }
+
+/* ============ About / Sobre ============ */
+.prose { max-width: 42rem; }
+.prose p { color: var(--muted); margin-bottom: 1rem; }
+.prose ul { color: var(--muted); padding-left: 1.2rem; margin-bottom: 1rem; }
+.prose li { margin-bottom: 0.4rem; }
+
+/* ============ Footer ============ */
+.site-footer {
+  position: relative; z-index: 1;
+  margin-top: 5rem;
+  border-top: 1px solid var(--border);
+  background: rgba(12, 16, 36, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 3rem 0 1.5rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.footer-grid h4 {
+  text-transform: uppercase; letter-spacing: 0.2em;
+  font-size: 0.75rem; color: var(--urucum-glow);
+  margin-bottom: 0.8rem;
+  font-family: 'Manrope', sans-serif; font-weight: 600;
+}
+.footer-grid p, .footer-grid li {
+  color: var(--muted); font-size: 0.88rem; line-height: 1.7;
+}
+.footer-grid ul { list-style: none; }
+.footer-bottom {
+  text-align: center;
+  color: var(--muted); font-size: 0.78rem;
+  margin-top: 2rem;
+}
+
+/* ============ Animations ============ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.7s ease both; }
